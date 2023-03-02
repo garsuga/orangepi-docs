@@ -23,3 +23,18 @@ FF FF FF FF FF FF
 DE AD BE EF BA AD
 F0 0D
 ```
+### 4. Clone and install [SPI-Py](https://github.com/lthiery/SPI-Py)
+### 5. Check if SPI-Py is working
+```python
+import spi
+
+spidev = spi.openSPI(device="/dev/spidev1.0", speed=500000)
+
+data_out = (0xFF,0x00,0xFF)
+data_in = (0x00, 0x00, 0x00)
+data_in = spi.transfer(spidev, data_out)
+
+# These should be equal
+print(f"data_out={data_out}")
+print(f"data_in={data_in}")
+```
